@@ -20,12 +20,26 @@ namespace Miruna_Chirita_lab2.Pages.Categories
         }
 
         public IList<Category> Category { get;set; } = default!;
+        
+        
+        
 
-        public async Task OnGetAsync()
+
+        public async Task OnGetAsync( int? id,int? BookID)
         {
-            if (_context.Category != null)
+            CategoryData = new CategoryIndexData();
+
+            CategoryData.Categories = await _context.Category
+                .Include(i => i.BookCategories)
+                .ThenInclude(i => i.Book)
+                .ThenInclude(i => i.Author)
+                .OrderBy(i => i.CategoryName)
+                .ToListAsync();
+            if(id != null)
             {
-                Category = await _context.Category.ToListAsync();
+                CategoryID = id.Value;
+                Category category = AssignedCategoryData.Categories.When(id => id.ID == id.Value).Single();
+                AssignedCategoryData.BookCategories = category.BookCategories;
             }
         }
     }

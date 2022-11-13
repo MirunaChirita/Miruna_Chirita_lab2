@@ -11,7 +11,6 @@ using Miruna_Chirita_lab2.Models;
 namespace Miruna_Chirita_lab2.Pages.Books
 {
     public class CreateModel : BookCategoriesPageModel
-
     {
         private readonly Miruna_Chirita_lab2.Data.Miruna_Chirita_lab2Context _context;
 
@@ -25,11 +24,12 @@ namespace Miruna_Chirita_lab2.Pages.Books
             var authorList = _context.Author.Select(x => new
             {
                 x.ID,
-                FullName = x.LastName + " " + x.FirstName
+                FullName = x.FirstName + " " + x.LastName
             });
             ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
             ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID",
            "PublisherName");
+
             var book = new Book();
             book.BookCategories = new List<BookCategory>();
             PopulateAssignedCategoryData(_context, book);
@@ -38,6 +38,9 @@ namespace Miruna_Chirita_lab2.Pages.Books
 
         [BindProperty]
         public Book Book { get; set; }
+
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync(string[] selectedCategories)
         {
             var newBook = new Book();
@@ -53,11 +56,12 @@ namespace Miruna_Chirita_lab2.Pages.Books
                     newBook.BookCategories.Add(catToAdd);
                 }
             }
-            if (await TryUpdateModelAsync<Book>(
+            await TryUpdateModelAsync<Book>(
             newBook,
             "Book",
             i => i.Title, i => i.AuthorID,
-            i => i.Price, i => i.PublishingDate, i => i.PublisherID))
+            i => i.Price, i => i.PublishingDate, i => i.PublisherID);
+            if (newBook != null)
             {
                 _context.Book.Add(newBook);
                 await _context.SaveChangesAsync();
@@ -69,4 +73,4 @@ namespace Miruna_Chirita_lab2.Pages.Books
     }
 }
 
-       
+

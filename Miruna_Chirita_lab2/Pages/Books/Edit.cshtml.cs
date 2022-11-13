@@ -23,19 +23,20 @@ namespace Miruna_Chirita_lab2.Pages.Books
         }
 
         [BindProperty]
-        public Book Book { get; set; }
+        public Book Book { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Book == null)
             {
                 return NotFound();
             }
+
             Book = await _context.Book
- .Include(b => b.Publisher)
- .Include(b => b.BookCategories).ThenInclude(b => b.Category)
- .AsNoTracking()
- .FirstOrDefaultAsync(m => m.ID == id);
+                .Include(b => b.Publisher)
+                .Include(b => b.BookCategories).ThenInclude(b => b.Category)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Book == null)
             {
@@ -52,14 +53,18 @@ namespace Miruna_Chirita_lab2.Pages.Books
            "PublisherName");
             return Page();
         }
-        public async Task<IActionResult> OnPostAsync(int? id, string[]
-selectedCategories)
+
+
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync(int? id, string[] selectedCategories)
         {
             if (id == null)
             {
                 return NotFound();
             }
             var bookToUpdate = await _context.Book
+                .Include(i => i.Author)
             .Include(i => i.Publisher)
             .Include(i => i.BookCategories)
             .ThenInclude(i => i.Category)
@@ -78,12 +83,14 @@ selectedCategories)
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
-            //Apelam UpdateBookCategories pentru a aplica informatiile din checkboxuri la entitatea Books care 
-            //este editata 
+            //Apelam UpdateBookCategories pentru a aplica informatiile din checkboxuri la entitatea Books care
+            //este editata
             UpdateBookCategories(_context, selectedCategories, bookToUpdate);
             PopulateAssignedCategoryData(_context, bookToUpdate);
             return Page();
         }
+
+
     }
 }
 

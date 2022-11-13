@@ -54,8 +54,7 @@ namespace Miruna_Chirita_lab2.Models
                     {
                         BookCategory courseToRemove
                         = bookToUpdate
-                        .BookCategories
-                        .SingleOrDefault(i => i.CategoryID == cat.ID);
+                        .BookCategories.SingleOrDefault(i => i.CategoryID == cat.ID);
                         context.Remove(courseToRemove);
                     }
                 }

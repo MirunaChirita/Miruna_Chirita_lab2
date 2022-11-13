@@ -30,7 +30,7 @@ namespace Miruna_Chirita_lab2.Pages.Categories
                 return NotFound();
             }
 
-            var category =  await _context.Category.FirstOrDefaultAsync(m => m.ID == id);
+            var category = await _context.Category.FirstOrDefaultAsync(m => m.ID == id);
             if (category == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace Miruna_Chirita_lab2.Pages.Categories
 
         private bool CategoryExists(int id)
         {
-          return _context.Category.Any(e => e.ID == id);
+            return _context.Category.Any(e => e.ID == id);
         }
     }
 }

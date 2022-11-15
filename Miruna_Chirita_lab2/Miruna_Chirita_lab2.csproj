@@ -7,6 +7,37 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20221018131310_InitialCreate.cs" />
+    <Compile Remove="Migrations\20221018131310_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20221018133645_PublishingDate.cs" />
+    <Compile Remove="Migrations\20221018133645_PublishingDate.Designer.cs" />
+    <Compile Remove="Migrations\20221025133708_Publisher.cs" />
+    <Compile Remove="Migrations\20221025133708_Publisher.Designer.cs" />
+    <Compile Remove="Migrations\20221025134020_Author.cs" />
+    <Compile Remove="Migrations\20221025134020_Author.Designer.cs" />
+    <Compile Remove="Migrations\20221026121347_BookCategory.cs" />
+    <Compile Remove="Migrations\20221026121347_BookCategory.Designer.cs" />
+    <Compile Remove="Migrations\20221101143417_author1.cs" />
+    <Compile Remove="Migrations\20221101143417_author1.Designer.cs" />
+    <Compile Remove="Migrations\20221108202005_CategoryIndexData.cs" />
+    <Compile Remove="Migrations\20221108202005_CategoryIndexData.Designer.cs" />
+    <Compile Remove="Migrations\20221108202227_Borrowing.cs" />
+    <Compile Remove="Migrations\20221108202227_Borrowing.Designer.cs" />
+    <Compile Remove="Migrations\20221108221033_Category.cs" />
+    <Compile Remove="Migrations\20221108221033_Category.Designer.cs" />
+    <Compile Remove="Migrations\20221109135820_Create.Designer.cs" />
+    <Compile Remove="Migrations\20221109135820_Create.Designer.Designer.cs" />
+    <Compile Remove="Migrations\20221109143456_Create.cs" />
+    <Compile Remove="Migrations\20221109143456_Create.Designer.cs" />
+    <Compile Remove="Migrations\20221109143555_PublisingDate.cs" />
+    <Compile Remove="Migrations\20221109143555_PublisingDate.Designer.cs" />
+    <Compile Remove="Migrations\20221109205436_CreateIdentity.cs" />
+    <Compile Remove="Migrations\20221109205436_CreateIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20221115140144_member1.cs" />
+    <Compile Remove="Migrations\20221115140144_member1.Designer.cs" />
+    <Compile Remove="Migrations\20221115140557_member2.cs" />
+    <Compile Remove="Migrations\20221115140557_member2.Designer.cs" />
+    <Compile Remove="Migrations\Miruna_Chirita_lab2ContextModelSnapshot.cs" />
     <Compile Remove="Pages\Index.cshtml.cs" />
   </ItemGroup>
 

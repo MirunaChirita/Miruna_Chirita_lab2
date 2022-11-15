@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Miruna_Chirita_lab2.Migrations;
+using Miruna_Chirita_lab2.Models;
 
 namespace Miruna_Chirita_lab2.Areas.Identity.Pages.Account
 {
@@ -128,8 +129,8 @@ namespace Miruna_Chirita_lab2.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
-               //Member.Email = Input.Email;
-               // _context.Member.Add(Member);
+               Member.Email = Input.Email;
+               _context.Member.Add(Member);
                 await _context.SaveChangesAsync();
 
                 if (result.Succeeded)

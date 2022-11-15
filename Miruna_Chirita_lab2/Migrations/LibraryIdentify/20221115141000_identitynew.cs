@@ -2,10 +2,9 @@
 
 #nullable disable
 
-namespace Miruna_Chirita_lab2.Migrations
+namespace Miruna_Chirita_lab2.Migrations.LibraryIdentify
 {
-
-    public partial class Member : Migration
+    public partial class identitynew : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
